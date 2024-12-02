@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 @Component({
@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule]
 })
 export class HeardBarComponent {
+  @Output() openTodoFormEvent = new EventEmitter<void>();
 
   constructor(private router: Router) { }
 
@@ -21,6 +22,6 @@ export class HeardBarComponent {
   }
 
   openTodoForm(): void {
-    console.log('Open new todo form');
+    this.openTodoFormEvent.emit();
   }
 }
