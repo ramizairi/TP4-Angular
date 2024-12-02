@@ -1,0 +1,79 @@
+<div class="modal" [ngClass]="{ 'd-block': formVisible }" tabindex="-1"
+    role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Todo</h5>
+                <button type="button" class="close" aria-label="Close"
+                    (click)="closeForm()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #todoForm="ngForm" (ngSubmit)="onSubmit(todoForm)">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input
+                            type="text"
+                            id="title"
+                            class="form-control"
+                            name="title"
+                            [(ngModel)]="todo.title"
+                            #title="ngModel"
+                            required />
+                        <div *ngIf="title.invalid && title.touched"
+                            class="text-danger">
+                            Title is required.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description"
+                            class="form-label">Description</label>
+                        <textarea
+                            id="description"
+                            class="form-control"
+                            name="description"
+                            [(ngModel)]="todo.description"
+                            rows="3"
+                            required
+                            #description="ngModel"></textarea>
+                        <div *ngIf="description.invalid && description.touched"
+                            class="text-danger">
+                            Description is required.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date</label>
+                        <input
+                            type="date"
+                            id="date"
+                            class="form-control"
+                            name="date"
+                            [(ngModel)]="todo.date"
+                            #date="ngModel"
+                            required />
+                        <div *ngIf="date.invalid && date.touched"
+                            class="text-danger">
+                            Date is required.
+                        </div>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input
+                            type="checkbox"
+                            id="done"
+                            class="form-check-input"
+                            name="done"
+                            [(ngModel)]="todo.done" />
+                        <label for="done" class="form-check-label">Done</label>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary me-2"
+                            [disabled]="todoForm.invalid">
+                            Add
+                        </button>
+                        <button type="button" class="btn btn-secondary"
+                            (click)="closeForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>

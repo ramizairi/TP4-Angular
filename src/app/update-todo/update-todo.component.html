@@ -1,0 +1,51 @@
+<div class="modal" tabindex="-1" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Todo</h5>
+        <button type="button" class="btn-close" (click)="closeUpdateModal.emit()"></button>
+      </div>
+      <div class="modal-body">
+        <form #updateForm="ngForm" (ngSubmit)="updateTodo()">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              class="form-control"
+              [(ngModel)]="todo.title"
+              name="title"
+              required
+            />
+          </div>
+    
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              id="description"
+              class="form-control"
+              [(ngModel)]="todo.description"
+              name="description"
+              required
+            ></textarea>
+          </div>
+    
+          <div class="form-group form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="done"
+              [(ngModel)]="todo.done"
+              name="done"
+            />
+            <label for="done">Done</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeUpdateModal.emit()">Cancel</button>
+        <button type="submit" class="btn btn-primary" [disabled]="updateForm.invalid" (click)="updateTodo()">Update</button>
+      </div>
+    </div>
+  </div>
+</div>

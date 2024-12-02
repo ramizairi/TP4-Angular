@@ -1,0 +1,39 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "title": "IT",
+      "done": true,
+      "date": "2024-11-30T12:00:00.000Z",
+      "description": "Complete the Angular tutorial"
+    },
+    {
+      "id": "2",
+      "title": "Recruiters",
+      "done": false,
+      "date": "2024-11-30T12:00:00.000Z",
+      "description": "Complete the Angular tutorial"
+    },
+    {
+      "id": "3",
+      "title": "TD4 Angular",
+      "description": "aaaaaaaaaa",
+      "date": "2024-12-02",
+      "done": false
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "login": "mail@gmail.com",
+      "password": "bingo",
+      "token": "ffo33dde"
+    },
+    {
+      "id": 2,
+      "login": "rami@gmail.com",
+      "password": "rami",
+      "token": "fforamie"
+    }
+  ]
+}

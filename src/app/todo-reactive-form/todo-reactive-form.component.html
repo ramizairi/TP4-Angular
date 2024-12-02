@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <form *ngIf="!isLoggedIn" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="login" class="form-label">Email</label>
+            <input id="login" formControlName="login" type="email"
+                class="form-control" />
+            <div
+                *ngIf="authForm.get('login')?.invalid && authForm.get('login')?.touched"
+                class="text-danger">
+                Please enter a valid email.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" formControlName="password" type="password"
+                class="form-control" />
+            <div
+                *ngIf="authForm.get('password')?.invalid && authForm.get('password')?.touched"
+                class="text-danger">
+                Password must be at least 4 characters.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary"
+            [disabled]="authForm.invalid">Sign In</button>
+    </form>
+
+    <div *ngIf="isLoggedIn" class="text-center mt-3">
+        <p>You are logged in!</p>
+        <button class="btn btn-danger" (click)="onLogout()">Sign Out</button>
+    </div>
+</div>

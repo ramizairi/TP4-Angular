@@ -1,0 +1,10 @@
+<div class="modal" *ngIf="todo">
+    <div class="modal-content">
+        <h1>Task details</h1>
+        <hr>
+        <h3>{{ todo.title }} <!--<fa-icon [icon]="['fa', todo.done ? 'Check' : 'Check']"></fa-icon>--> {{todo.done}}</h3>
+        <p>{{ todo.description }}</p>
+        <p>Date: {{ todo.date | date }}</p>
+        <button (click)="closeModal()">Close</button>
+    </div>
+</div>

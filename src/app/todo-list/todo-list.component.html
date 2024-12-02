@@ -1,0 +1,41 @@
+<app-heard-bar (openTodoFormEvent)="onOpenTodoForm()"></app-heard-bar>
+
+<!-- Form Modal Component -->
+<app-todo-template-driven-form></app-todo-template-driven-form>
+
+<div class="container">
+  <br /><br />
+  <ul class="list-group">
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center mt-4"
+      style="background-color: bisque;"
+      *ngFor="let todo of todos" 
+      appTodo
+      [ngClass]="{ 'highlight-todo': todo.highlight }">
+    >
+      <span [class.text-decoration-line-through]="todo.done">{{ todo.title }}</span>
+      <div>
+        <button class="btn btn-sm me-2" (click)="displayTodoDetail(todo)">
+          <fa-icon [icon]="faList" style="color: black;"></fa-icon>
+        </button>
+        <button class="btn btn-sm me-2" (click)="openUpdateModal(todo)">
+          <fa-icon [icon]="faPenToSquare"></fa-icon>
+        </button>
+        <button class="btn btn-sm" (click)="deleteTodo(todo)">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Modal for Todo Details -->
+  <app-todo-detail *ngIf="selectedTodo" [todo]="selectedTodo" (close)="closeModal()"></app-todo-detail>
+
+  <!-- Modal for Todo Update -->
+  <app-update-todo
+    *ngIf="selectedTodoToUpdate"
+    [todo]="selectedTodoToUpdate"
+    (closeUpdateModal)="closeUpdateModal()"
+    (todoUpdated)="handleTodoUpdated($event)"
+  ></app-update-todo>
+</div>
